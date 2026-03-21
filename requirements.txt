@@ -1,0 +1,29 @@
+# Core
+pyspark==3.5.1
+pandas==2.2.2
+pyarrow==16.1.0
+
+# Data simulation
+faker==25.2.0
+
+# Snowflake
+snowflake-connector-python==3.10.1
+snowflake-sqlalchemy==1.5.3
+
+# Airflow (install separately — see note below)
+# apache-airflow==2.9.1
+
+# Config & utilities
+python-dotenv==1.0.1
+pyyaml==6.0.1
+
+# Testing
+pytest==8.2.2
+pytest-mock==3.14.0
+
+# Code quality (used in CI/CD)
+ruff==0.4.9
+
+# NOTE: Install Airflow separately to avoid dependency conflicts:
+# pip install "apache-airflow==2.9.1" --constraint \
+# "https://raw.githubusercontent.com/apache/airflow/constraints-2.9.1/constraints-3.11.txt"

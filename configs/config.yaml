@@ -1,0 +1,31 @@
+pipeline:
+  name: upi_transaction_insights
+  version: "1.0.0"
+
+simulator:
+  records_per_batch: 1000
+  schedule_interval_seconds: 60
+  anomaly_rate: 0.05
+
+paths:
+  bronze: data/bronze
+  silver: data/silver
+  gold:   data/gold
+
+spark:
+  app_name: UPI_Pipeline
+  master: local[*]
+  log_level: WARN
+
+snowflake:
+  warehouse: COMPUTE_WH
+  database:  UPI_DB
+  schema_bronze: BRONZE
+  schema_silver: SILVER
+  schema_gold:   GOLD
+  role:      SYSADMIN
+
+partitioning:
+  bronze_partition_col: txn_date
+  silver_partition_col: txn_date
+  gold_partition_col:   txn_date

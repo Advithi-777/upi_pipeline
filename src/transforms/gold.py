@@ -14,7 +14,7 @@ import os
 import yaml
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
-from pyspark.sql.window import Window
+
 
 
 # ── Load config ───────────────────────────────────────────────────────────────
@@ -137,7 +137,7 @@ def anomaly_summary(df):
       z-score or IQR logic before they reach the Gold layer.
     """
     return (
-        df.filter(F.col("is_anomaly") == True)
+        df.filter(F.col("is_anomaly"))
         .groupBy("txn_date", "sender_bank")
         .agg(
             F.count("txn_id").alias("anomaly_count"),
